@@ -2,7 +2,7 @@
 # Details:
 1. ReadDir.c: This was made to learn fetching file names of particular type of files in this case (.txt).
 2. ServerInc.c: This was made to learn how to connect a self made server to a self made client and transferring files among them.
-3. Server1.c: This was made to connect our server to a global client like filezilla or telnet.
+3. Server1.c: This was made to connect our server to a global client like filezilla or telnet (telnet is working only till PORT and not working for RETR, STOR and LIST)
 4. server2.c: This was made to debug commands like PWD, TYPE and QUIT, sent by the client (here FileZilla) to the server.
 5. Server3.c: In this debugging was done for the commands like SYST, PORT and LIST sent by the client to the server.
 6. Server4.c: In this storing a file on the server using STOR command was implemented.
