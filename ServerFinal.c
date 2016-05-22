@@ -244,14 +244,34 @@ int main(int argc, char *argv[]){
 					if ( bytes <= 0 )
 						break;
 					printf("\n-->DEBUG: the message from client reads: '%s' \r\n", receive_buffer);
+					strcpy(temp_buffer,receive_buffer);
+					memset(send_buffer,'\0',strlen(send_buffer));
 					strcat(receive_buffer," > tmp.txt ");
 					system(receive_buffer);
 					fin=fopen("tmp.txt","r");
-					while(!feof(fin)){
-						fscanf(fin,"%s",send_buffer);
+					fscanf(fin,"%s ",send_buffer);
+					if(send_buffer[0]!='\0'){
 						send(ns,send_buffer,strlen(send_buffer),0);
 						send(ns,"\n",sizeof("\n"),0);
 						memset(send_buffer,'\0',strlen(send_buffer));
+						while(!feof(fin)){
+							fscanf(fin,"%s ",send_buffer);
+							send(ns,send_buffer,strlen(send_buffer),0);
+							send(ns,"\n",sizeof("\n"),0);
+							memset(send_buffer,'\0',strlen(send_buffer));
+						}
+						send(ns,"\n",sizeof("\n"),0);
+					}
+					else{
+						strcat(temp_buffer," 2> tmp.txt ");
+						system(temp_buffer);
+						fin=fopen("tmp.txt","r");
+						while(!feof(fin)){
+								memset(send_buffer,'\0',strlen(send_buffer));
+								fgets(send_buffer,100,fin);
+								send(ns,send_buffer,strlen(send_buffer),0);
+						}
+						send(ns,"\n",sizeof("\n"),0);
 					}
 				}
 				break;
