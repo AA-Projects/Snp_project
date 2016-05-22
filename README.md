@@ -1,4 +1,7 @@
 # Snp_project on FTP Server
+# Pre-Requisites
+1. FileZilla client.
+2. Ubuntu or any other unix based OS.
 # Details:
 1. ReadDir.c: This was made to learn fetching file names of particular type of files in this case (.txt).
 2. ServerInc.c: This was made to learn how to connect a self made server to a self made client and transferring files among them.
