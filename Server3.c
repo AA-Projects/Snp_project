@@ -56,7 +56,7 @@ int main(int argc, char *argv[]){
 			fflush(stdout);
 			printf("\n-->DEBUG: the message from client reads: '%s' \r\n", receive_buffer);
 			fflush(stdout);
-			if(strncmp(receive_buffer,"USER",4)  && strncmp(receive_buffer,"PASS",4)&&  strncmp(receive_buffer,"QUIT",4)&&  strncmp(receive_buffer,"PWD",3)&&  strncmp(receive_buffer,"TYPE",4)&&  strncmp(receive_buffer,"SYST",4) &&strncmp(receive_buffer,"PORT",4)&&strncmp(receive_buffer,"LIST",4)  &&  strncmp(receive_buffer,"NLST",4)){
+			if(strncmp(receive_buffer,"USER",4)  && strncmp(receive_buffer,"PASS",4)&&  strncmp(receive_buffer,"QUIT",4)&&  strncmp(receive_buffer,"PWD",3)&&  strncmp(receive_buffer,"TYPE",4)&& strncmp(receive_buffer,"PORT",4)&&strncmp(receive_buffer,"LIST",4)  &&  strncmp(receive_buffer,"NLST",4)){
 				sprintf(send_buffer,"\n202 Command not implemented, superfluous at this site. \r\n");
 				fflush(stdout);
 				bytes = send(ns, send_buffer, strlen(send_buffer), 0);
@@ -99,26 +99,6 @@ int main(int argc, char *argv[]){
 				if (bytes < 0)
 					break;
 				close(ns);
-			}
-			if (strncmp(receive_buffer,"SYST",4)==0){
-				system("lsb_release -d > tmp.txt");
-				FILE *fin=fopen("tmp.txt","r");
-				sprintf(send_buffer,"\n150 Transfering... \r\n");
-				fflush(stdout);                
-				bytes = send(ns, send_buffer, strlen(send_buffer), 0);
-				char temp_buffer[80];
-				while (!feof(fin)){
-					fgets(temp_buffer,78,fin);
-					sprintf(send_buffer,"%s",temp_buffer);
-					fflush(stdout);                    
-					send(s_data_act, send_buffer, strlen(send_buffer), 0);
-				}
-				fclose(fin);
-				sprintf(send_buffer,"\n226 File transfer completed... \r\n");
-				fflush(stdout);
-				bytes = send(ns, send_buffer, strlen(send_buffer), 0);
-				if (bytes < 0)
-					break;
 			}
 			if(strncmp(receive_buffer,"PORT",4)==0){
 				sscanf(receive_buffer, "PORT %d,%d,%d,%d,%d,%d",&act_ip[0],&act_ip[1],&act_ip[2],&act_ip[3],(int*)&act_port[0],(int*)&act_port[1]);
