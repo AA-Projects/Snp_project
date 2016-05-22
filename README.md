@@ -24,7 +24,7 @@
    5. You can check downloaded file in respective folder.
    6. Close terminal and FileZilla.
    
-   If 2:
+8. If 2:
    1. Open another terminal and type telnet ip port (ip is ipv4 of your machine and port is any port except private).
    2. Type any valid command that can be run on terminal of unix.
    3. If there is no output then it is known that there might be an error else result will be displayed on terminal.
