@@ -238,3 +238,16 @@ int main(int argc, char *argv[]){
 	}
 	close(s);
 }
+void wy_fileName_collector(char *_buffer, char  *_nameBuffer){
+	char bf[100000];
+	char sep[2] = " ";
+	char *word;
+	int  wcount=0;
+	strcpy(bf, _buffer);
+	for (word = strtok(bf, sep);word;word = strtok(NULL, sep)){
+		wcount++;
+		if(wcount == 2){
+			strcpy(_nameBuffer, word);
+		}
+	}
+}
