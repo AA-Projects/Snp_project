@@ -1,5 +1,5 @@
 # Snp_project on FTP Server
-Details:
+# Details:
 1. ReadDir.c: This was made to learn fetching file names of particular type of files in this case (.txt).
 2. ServerInc.c: This was made to learn how to connect a self made server to a self made client and transferring files among them.
 3. Server1.c: This was made to connect our server to a global client like filezilla or telnet.
