@@ -15,12 +15,11 @@
 
 # Commands for running:
 1. Download ServerFinal.c.
-2. Change ip address inside the program and type there ip of your machine.
-3. Change current working directory to the directory where ServerFinal.c is saved.
-4. Type "gcc -o server ServerFinal.c" in current working directory.
-5. Type "./server port_number" (port_Numner can be any number but try to use ports that are not private like 10000-50000).
-6. Now enter 1 for FileZilla and 2 for Telnet. Anything else will give error and program will terminate.
-7. If 1:
+2. Change current working directory to the directory where ServerFinal.c is saved.
+3. Type "gcc -o server ServerFinal.c -w" in current working directory.
+4. Type "./server ip_add port_number" (ip_add is ip of your machine and port_Numner can be any number but try to use ports that are not private like 10000-50000).
+5. Now enter 1 for FileZilla and 2 for Telnet. Anything else will give error and program will terminate.
+6. If 1:
    1. Go to FileZilla and type ip of your machine, use any username and password and type port number taken as input in ./server.
    2. FileZilla will be connected to the server and list of files present in current working directory will be displayed in the remote directory column.  
    3. Now close the server by using ^C or simply closing the terminal. Wait for sometime so that server can unbind the connection.
@@ -28,8 +27,8 @@
    5. You can check downloaded file in respective folder.
    6. Close terminal and FileZilla.
    
-8. If 2:
-   1. Open another terminal and type "telnet ip port" (ip is ipv4 of your machine and port is any port except private).
-   2. Type any command that you want to run on terminal.
-   3. Output of the command typed will be displayed on client terminal. If there is an error in running, error is also displayed at the server.
+7. If 2:
+   1. Open another terminal and type "telnet ip port" (ip is ip of your machine and port is the port entered in ./server).
+   2. Type any command that you want to run on terminal (Gives warning on the server for commands like vi and the program hangs, try to run basic commands like ls, pwd, clear, gcc, etc).
+   3. Output of the command typed will be displayed on client terminal. If there is an error in running, error is also displayed at the client as well as at the server.
    4. Close both terminals.
