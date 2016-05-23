@@ -29,8 +29,8 @@ int main(int argc, char *argv[]){
 		fflush(stdout);
 	}
 	localaddr.sin_family = AF_INET;
-	localaddr.sin_port = htons(atoi(argv[1]));
-	localaddr.sin_addr.s_addr = inet_addr("10.0.2.15");
+	localaddr.sin_port = htons(atoi(argv[2]));
+	localaddr.sin_addr.s_addr = inet_addr(argv[1]);
 	if (bind(s,(struct sockaddr *)(&localaddr),sizeof(localaddr)) != 0){
 		printf("Bind failed!\n");
 		fflush(stdout);
@@ -152,8 +152,10 @@ int main(int argc, char *argv[]){
 					s_data_act = socket(AF_INET, SOCK_STREAM, 0);
 					local_act.sin_family=AF_INET;
 					local_act.sin_addr.s_addr=inet_addr("10.0.2.15");
-					local_act.sin_port=htons(port_dec);memset(&fileName, 0, strlen(fileName));
-					nsx = connect(s_data_act,(struct sockaddr *)(&local_act),sizeof(local_act));memset(&fileName, 0, strlen(fileName));
+					local_act.sin_port=htons(port_dec);
+					memset(&fileName, 0, strlen(fileName));
+					nsx = connect(s_data_act,(struct sockaddr *)(&local_act),sizeof(local_act));
+					memset(&fileName, 0, strlen(fileName));
 					wy_fileName_collector(receive_buffer,   fileName);
 					if(fopen(fileName,"w")  ==  NULL){
 						sprintf(send_buffer,"\n450 Requested file action not taken. \r\n");
