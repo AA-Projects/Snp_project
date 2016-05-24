@@ -3,7 +3,10 @@
 1. FileZilla client.
 2. Ubuntu or any other unix based OS.
 
-# Details:
+# Project Details:
+   This is a self made FTP and telnet server which has no linking with the default FTP server. To this server a client can connect and transfer files using FTP and run commands on a remote computer and fetch the results using Telnet.
+
+# File Details:
 1. ReadDir.c: This was made to learn fetching file names of particular type of files in this case (.txt).
 2. ServerInc.c: This was made to learn how to connect a self made server to a self made client and transferring files among them.
 3. Server1.c: This was made to connect our server to a global client like filezilla or telnet.
